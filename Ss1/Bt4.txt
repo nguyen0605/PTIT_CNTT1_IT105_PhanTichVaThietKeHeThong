@@ -1,0 +1,31 @@
+1. Planning
+Xác định mục tiêu của hệ thống (tự động hóa điểm danh, giảm gian lận, tiết kiệm thời gian), phạm vi dự án, nguồn lực (nhân sự, chi phí, 
+thời gian), và rủi ro. Lên timeline dự kiến và lựa chọn công nghệ (mobile app, web admin, cơ sở dữ liệu trung tâm).
+
+
+2. Analysis (Phân tích yêu cầu)
+Thu thập và phân tích yêu cầu của người dùng: giảng viên cần điểm danh nhanh; sinh viên muốn xem lịch sử điểm danh; phòng đào tạo cần 
+thống kê tỷ lệ chuyên cần. Mô tả các chức năng chính (đăng nhập, quét mã QR, xem danh sách lớp, báo cáo chuyên cần).
+
+
+3. Design
+Thiết kế kiến trúc phần mềm, cơ sở dữ liệu (bảng Sinh viên, Lớp học, Buổi học, Điểm danh...), giao diện người dùng (UI/UX), luồng xử lý 
+giữa giảng viên – sinh viên – hệ thống. Chuẩn bị sơ đồ UML, ERD và mockup màn hình.
+
+
+
+4. Implementation
+Bắt đầu viết mã chương trình: xây dựng ứng dụng mobile cho sinh viên (quét QR, xem kết quả điểm danh), web admin cho giảng viên và phòng 
+đào tạo. Kết nối với API và database, tích hợp chức năng đăng nhập, gửi thông báo.
+
+
+
+5. Testing
+Thực hiện kiểm thử chức năng (đăng nhập, điểm danh, xuất báo cáo), kiểm thử giao diện, kiểm thử bảo mật, và kiểm thử người dùng (UAT) để 
+đảm bảo ứng dụng hoạt động đúng yêu cầu và không có lỗi nghiêm trọng.
+
+
+
+6. Deployment & Maintenance
+Triển khai ứng dụng lên máy chủ hoặc store (Google Play / App Store), hướng dẫn người dùng sử dụng. Sau khi đi vào hoạt động, theo dõi lỗi, 
+cập nhật tính năng, và bảo trì hệ thống định kỳ (nâng cấp server, vá lỗi bảo mật, cải tiến giao diện).

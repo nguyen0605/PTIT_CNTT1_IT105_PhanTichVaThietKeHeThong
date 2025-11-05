@@ -1,0 +1,39 @@
+Dự án A – Phần mềm quản lý điểm cho trường cấp 2
+
+→ Mô hình phù hợp: Waterfall (Mô hình thác nước)
+
+Lý do chọn:
+
+Dễ áp dụng khi yêu cầu đã xác định ngay từ đầu.
+
+Có thể tiến hành phát triển theo các giai đoạn tuần tự (phân tích → thiết kế → lập trình → kiểm thử → triển khai).
+
+Quản lý tiến độ và tài liệu rõ ràng, phù hợp với dự án có quy mô vừa và nhỏ, ít thay đổi.
+
+
+
+Dự án B – Ứng dụng mobile đặt lịch khám bệnh
+
+→ Mô hình phù hợp: Agile (hoặc Scrum)
+
+Lý do chọn:
+
+Linh hoạt, dễ thích ứng với thay đổi yêu cầu.
+
+Cho phép phát hành từng phiên bản nhỏ (iteration/sprint) để nhận phản hồi sớm.
+
+Đội ngũ có thể cộng tác chặt chẽ với khách hàng, điều chỉnh sản phẩm theo thực tế.
+
+
+
+Dự án C – Hệ thống ngân hàng điện tử
+
+→ Mô hình phù hợp: Spiral (Mô hình xoắn ốc)
+
+Lý do chọn:
+
+Kết hợp giữa ưu điểm của Waterfall và nguyên tắc lặp của Agile.
+
+Tập trung vào đánh giá rủi ro và kiểm soát an toàn ở mỗi vòng xoắn.
+
+Phù hợp cho các dự án lớn, phức tạp, yêu cầu bảo mật cao và thay đổi có kiểm soát.

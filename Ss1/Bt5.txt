@@ -1,0 +1,13 @@
+1. Planning
+Xác định mục tiêu: tự động hóa điểm danh, giảm gian lận, tiết kiệm thời gian. Lên kế hoạch nhân sự, chi phí, công nghệ (app mobile, web, 
+server). Phân tích rủi ro như mạng yếu, sinh viên quét hộ.
+
+
+2. Requirement Analysis
+Thu thập yêu cầu từ giảng viên, sinh viên, phòng đào tạo. Xác định chức năng: tạo buổi học, hiển thị/đổi QR, sinh viên quét mã, thống kê –
+báo cáo. Mô tả luồng nghiệp vụ và quy tắc (trễ bao nhiêu phút là “muộn”, giới hạn thời gian quét, v.v.).
+
+
+
+3. System DesignThiết kế kiến trúc (ứng dụng mobile, web, backend, database). Vẽ sơ đồ use case và class. Thiết kế cơ sở dữ liệu (Sinh viên, 
+Buổi học, Điểm danh, QR). Lên giao diện mẫu cho người dùng và quy trình quét – xác nhận điểm danh.
