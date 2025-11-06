@@ -1,0 +1,82 @@
+1. Các yếu tố môi trường ảnh hưởng đến hệ thống quản lý bệnh viện
+
+Người dùng
+
+Phần cứng
+
+Phần mềm
+
+Hệ thống bên ngoài
+
+Quy trình nghiệp vụ
+
+Luật lệ – quy định
+
+Dữ liệu y tế nhạy cảm
+
+Hạ tầng mạng – Internet
+
+Khả năng vận hành 24/7
+
+Rủi ro an toàn – sự cố y tế
+
+2. Cách từng yếu tố tác động đến yêu cầu kỹ thuật
+1) Người dùng
+
+Tác động: Cần giao diện dễ dùng, phân quyền truy cập rõ ràng (bác sĩ, y tá, nhân viên xét nghiệm,…).
+
+Yêu cầu kỹ thuật: UX đơn giản, RBAC (Role-Based Access Control), có phần hướng dẫn.
+
+2) Phần cứng
+
+Tác động: Thiết bị đa dạng (PC, tablet, máy in nhãn, RFID).
+
+Yêu cầu kỹ thuật: Tương thích đa nền tảng, hỗ trợ driver thiết bị.
+
+3) Phần mềm
+
+Tác động: Kết nối hệ điều hành bệnh viện cũ (legacy).
+
+Yêu cầu kỹ thuật: API chuyển đổi dữ liệu, định dạng chuẩn HL7/FHIR.
+
+4) Hệ thống bên ngoài
+
+Tác động: Tích hợp bảo hiểm, thanh toán, xét nghiệm.
+
+Yêu cầu kỹ thuật: API bảo mật, giao tiếp thông qua chuẩn chung, SLA ổn định.
+
+5) Quy trình nghiệp vụ
+
+Tác động: Quy trình khám → xét nghiệm → chẩn đoán → kê đơn → thanh toán.
+
+Yêu cầu kỹ thuật: Workflow engine, theo dõi trạng thái từng bệnh nhân theo thời gian thực.
+
+6) Luật lệ – quy định
+
+Tác động: Tuân thủ bảo mật hồ sơ bệnh nhân, quy định Bộ Y tế.
+
+Yêu cầu kỹ thuật: Mã hóa dữ liệu, log truy vết, phân quyền chặt chẽ.
+
+7) Dữ liệu y tế nhạy cảm
+
+Tác động: Cao rủi ro lộ thông tin.
+
+Yêu cầu kỹ thuật: AES/SSL, backup, giám sát xâm nhập, auditing.
+
+8) Hạ tầng mạng
+
+Tác động: Khi mạng yếu có thể ngưng hoạt động khám bệnh.
+
+Yêu cầu kỹ thuật: Cơ chế offline cache, edge server, tối ưu băng thông.
+
+9) Vận hành 24/7
+
+Tác động: Bệnh viện hoạt động liên tục.
+
+Yêu cầu kỹ thuật: Hệ thống high-availability, failover, monitoring 24/7.
+
+10) Rủi ro an toàn – sự cố
+
+Tác động: Mọi lỗi hệ thống có thể ảnh hưởng sức khỏe bệnh nhân.
+
+Yêu cầu kỹ thuật: Kiểm thử nghiêm ngặt, backup dữ liệu thời gian thực, cảnh báo tự động.

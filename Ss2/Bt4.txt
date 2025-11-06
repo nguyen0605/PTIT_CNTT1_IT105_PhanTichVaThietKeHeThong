@@ -1,0 +1,31 @@
+Cấu trúc tài liệu SRS – hệ thống học trực tuyến
+
+Giới thiệu hệ thống
+Trình bày mục đích, phạm vi và đối tượng sử dụng tài liệu.
+
+Tổng quan sản phẩm
+Mô tả hệ thống hoạt động trong bối cảnh nào và chức năng chính gồm những gì.
+
+Người dùng và vai trò
+Liệt kê các loại người dùng (sinh viên, giảng viên, quản trị) và nhu cầu của họ.
+
+Yêu cầu chức năng
+Định nghĩa các tính năng cần có: quản lý khóa học, xem bài giảng, nộp bài, làm quiz,…
+
+Yêu cầu phi chức năng
+Nêu chất lượng hệ thống: bảo mật, hiệu năng, độ tin cậy, dễ sử dụng.
+
+Giao diện người dùng
+Mô tả bố cục màn hình và trải nghiệm cơ bản.
+
+Ràng buộc kỹ thuật
+Các hạn chế về phần cứng, nền tảng, công nghệ.
+
+Mô hình dữ liệu
+Liệt kê dữ liệu chính: khóa học, bài học, bài nộp, điểm số và quan hệ.
+
+Quy tắc nghiệp vụ
+Luật tính điểm, điều kiện cấp chứng chỉ, quy định deadline.
+
+Phụ lục
+Tài liệu tham khảo, từ viết tắt, hình minh họa hỗ trợ.

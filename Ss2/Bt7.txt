@@ -1,0 +1,9 @@
+| **Stakeholder**                | **Vai trò**                      | **Mối quan tâm**                                               | **Mức độ ưu tiên** |
+| ------------------------------ | -------------------------------- | -------------------------------------------------------------- | ------------------ |
+| Khách hàng (người đặt hàng)    | Người dùng cuối tạo đơn hàng     | Giao đúng hẹn, theo dõi đơn, phí rẻ, hỗ trợ nhanh              | **Critical**       |
+| Shipper (nhân viên giao hàng)  | Thực hiện lấy hàng và giao hàng  | Định tuyến tối ưu, nhận việc dễ, cập nhật đơn nhanh            | **Critical**       |
+| Chủ cửa hàng / shop bán hàng   | Cung cấp hàng hóa, tạo đơn giao  | Tích hợp nhanh, tránh thất lạc, cập nhật trạng thái chính xác  | **Major**          |
+| Bộ phận điều phối (dispatcher) | Quản lý, phân bổ đơn cho shipper | Thông tin thời gian thực, định tuyến, khả năng theo dõi vị trí | **Critical**       |
+| Admin hệ thống                 | Quản trị user, đơn hàng, báo cáo | Dashboard hiệu quả, log truy vết, hiệu năng ổn định            | **Major**          |
+| Bộ phận chăm sóc khách hàng    | Hỗ trợ khách khi có sự cố        | Truy xuất dữ liệu nhanh, lịch sử đơn đầy đủ                    | **Major**          |
+| Đơn vị thanh toán (bên thứ ba) | Xử lý giao dịch COD/Online       | API ổn định, bảo mật thanh toán                                | **Minor**          |

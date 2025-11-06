@@ -1,0 +1,18 @@
+Ví dụ phần mềm: App ngân hàng (Mobile Banking)
+I. Yêu cầu chức năng (Functional Requirements)
+
+Đăng nhập và xác thực người dùng: Cho phép đăng nhập bằng mật khẩu, OTP, vân tay/FaceID.
+
+Chuyển tiền nội bộ và liên ngân hàng: Người dùng nhập thông tin tài khoản, số tiền, xác nhận bằng OTP.
+
+Tra cứu số dư và lịch sử giao dịch: Hiển thị số dư hiện tại, lịch sử giao dịch theo thời gian.
+
+
+
+II. Yêu cầu phi chức năng (Non-functional Requirements)
+
+Bảo mật: Dữ liệu giao dịch phải được mã hóa, khóa tài khoản khi đăng nhập sai nhiều lần.
+
+Hiệu năng: Thời gian phản hồi các thao tác cơ bản trong 1–2 giây.
+
+Tính sẵn sàng: Hệ thống hoạt động 24/7, hạn chế gián đoạn vào giờ cao điểm.

@@ -1,0 +1,79 @@
+Shopee
+
+1. Người dùng (Users)
+
+Người mua (khách hàng)
+
+Người bán (shop)
+
+Shipper/đơn vị vận chuyển
+
+Nhân viên Shopee (CSKH, vận hành)
+
+Admin quản trị hệ thống
+
+2. Phần cứng (Hardware)
+
+Smartphone, máy tính bảng, laptop người dùng
+
+Máy chủ lưu trữ dữ liệu
+
+Server vận hành sàn thương mại điện tử
+
+Thiết bị mạng: router, load balancer
+
+Kho vận và máy quét mã vạch ở trung tâm phân phối
+
+3. Phần mềm (Software)
+
+Ứng dụng Shopee (Android/iOS)
+
+Website nền tảng Shopee.vn
+
+Hệ điều hành thiết bị (Android, iOS, Windows)
+
+Hệ quản trị cơ sở dữ liệu (MySQL, PostgreSQL,…)
+
+Phần mềm quản lý kho (WMS)
+
+Phần mềm phân tích dữ liệu (BI)
+
+4. Hệ thống bên ngoài (External Systems)
+
+Ví điện tử (ShopeePay, Momo, ZaloPay)
+
+Ngân hàng (chuyển khoản, liên kết tài khoản)
+
+Đơn vị vận chuyển (GHN, GHTK, J&T, VNPost,…)
+
+API dịch vụ SMS OTP
+
+Hệ thống quảng cáo bên thứ ba (Google Ads, Facebook Ads)
+
+5. Quy trình nghiệp vụ (Business Processes)
+
+Đăng sản phẩm và duyệt nội dung
+
+Đặt hàng → xác nhận → đóng gói → vận chuyển → giao hàng
+
+Xử lý hoàn trả – đổi hàng
+
+Đánh giá chất lượng sản phẩm
+
+Xử lý thanh toán, đối soát thu hộ COD
+
+Chăm sóc khách hàng
+
+6. Luật lệ, quy định (Policies & Regulations)
+
+Luật Thương mại điện tử Việt Nam
+
+Luật Bảo vệ quyền lợi người tiêu dùng
+
+Quy định về thuế GTGT và thuế thương mại
+
+Quy định về vận chuyển hàng hóa
+
+Quy định chống hàng giả, hàng cấm (Nghị định 98/2020/NĐ-CP)
+
+Chính sách bảo mật dữ liệu người dùng
