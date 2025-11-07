@@ -1,0 +1,51 @@
+🧾 Tên:
+
+Đặt hàng
+
+👥 Actor:
+
+Khách hàng (Primary Actor)
+
+Hệ thống ứng dụng (Supporting Actor)
+
+Nhà hàng (Supporting Actor)
+
+Tài xế giao hàng (Secondary, sau khi đơn được tạo)
+
+🎯 Mục tiêu:
+
+Khách hàng đặt món ăn từ nhà hàng thông qua ứng dụng để nhận được đơn hàng giao tận nơi.
+
+🔁 Luồng chính (Main Flow):
+
+Khách hàng đăng nhập vào ứng dụng.
+
+Khách hàng tìm kiếm món ăn hoặc chọn nhà hàng mong muốn.
+
+Hệ thống hiển thị danh sách món ăn và thông tin chi tiết (giá, hình ảnh, đánh giá).
+
+Khách hàng chọn món → thêm vào giỏ hàng.
+
+Khách hàng kiểm tra giỏ hàng (số lượng, giá, phí giao hàng).
+
+Khách hàng chọn địa chỉ giao hàng và phương thức thanh toán (ví điện tử, thẻ, COD).
+
+Hệ thống xác nhận đơn hàng và thông báo đến nhà hàng.
+
+Nhà hàng xác nhận đơn và bắt đầu chuẩn bị món.
+
+Hệ thống tìm tài xế giao hàng gần nhất để nhận đơn.
+
+Hệ thống hiển thị trạng thái “Đang giao hàng” cho khách.
+
+Sau khi giao thành công, hệ thống thông báo hoàn tất đơn hàng.
+
+⚠️ Luồng lỗi (Exception Flow):
+
+E1: Nhà hàng không còn món → Hệ thống thông báo cho khách hàng chọn lại hoặc huỷ đơn.
+
+E2: Thanh toán thất bại → Hệ thống yêu cầu chọn phương thức khác hoặc thử lại.
+
+E3: Không có tài xế nhận đơn → Hệ thống thông báo lỗi và hoàn tiền (nếu đã thanh toán).
+
+E4: Mất kết nối mạng → Khách hàng không thể hoàn tất đơn, hệ thống lưu tạm giỏ hàng.

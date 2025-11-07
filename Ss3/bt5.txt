@@ -1,0 +1,8 @@
+|   Actor                                 |   Loại    |   Use Case phục vụ (ví dụ tiêu biểu)                                                                                                                      |
+| --------------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Khách hàng (User)                       | Primary   | Đăng ký/Đăng nhập; Tìm kiếm món/nhà hàng; Đặt món; Chọn phương thức thanh toán; Thanh toán online/COD; Theo dõi trạng thái đơn hàng; Đánh giá đơn/nhà hàng |
+| Tài xế giao hàng (Shipper)              | Primary   | Đăng nhập; Nhận đơn giao; Xem chi tiết đơn & định vị; Cập nhật trạng thái (đã nhận món/đang giao/đã giao); Báo cáo sự cố giao hàng                         |
+| Nhà hàng/Đối tác bán hàng               | Primary   | Đăng nhập; Nhận & xác nhận/huỷ đơn; Cập nhật tình trạng món (còn/hết); Cập nhật menu & giá; Xác nhận món đã chuẩn bị xong                                  |
+| Admin hệ thống                          | Secondary | Quản lý tài khoản khách hàng/tài xế/nhà hàng; Duyệt nhà hàng đối tác; Quản lý khuyến mãi; Xem báo cáo, thống kê; Xử lý khiếu nại/vi phạm                   |
+| Cổng thanh toán (ví điện tử, ngân hàng) | Secondary | Xử lý giao dịch thanh toán; Xác nhận thanh toán thành công/thất bại; Xử lý hoàn tiền                                                                       |
+| Nhân viên CSKH (Support)                | Secondary | Tiếp nhận yêu cầu hỗ trợ; Tra cứu đơn hàng; Can thiệp chỉnh sửa/huỷ đơn theo quy định; Gửi phản hồi cho khách/tài xế/nhà hàng                              |
