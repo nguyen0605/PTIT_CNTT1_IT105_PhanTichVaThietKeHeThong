@@ -1,0 +1,28 @@
+| **Loại**           | **Tên**                                | **Giải thích / Vai trò**                                 |
+| ------------------ | -------------------------------------- | -------------------------------------------------------- |
+|    **Thuộc tính**  | `orderId: int`                         | Mã định danh duy nhất của đơn hàng                       |
+|                    | `orderDate: string`                    | Ngày tạo đơn hàng                                        |
+|                    | `totalAmount: float`                   | Tổng số tiền của đơn hàng                                |
+|                    | `status: string`                       | Trạng thái đơn hàng (chờ xử lý, đã giao, đã hủy, …)      |
+|                    | *(tuỳ chọn)* `customerId: int`         | Mã khách hàng liên quan đến đơn hàng                     |
+|    **Phương thức** | `calculateTotal()`                     | Tính tổng giá trị đơn hàng dựa trên sản phẩm và số lượng |
+|                    | `addProduct(product)`                  | Thêm sản phẩm vào đơn hàng                               |
+|                    | `removeProduct(product)`               | Xoá sản phẩm khỏi đơn hàng                               |
+|                    | *(tuỳ chọn)* `updateStatus(newStatus)` | Cập nhật trạng thái đơn hàng                             |
+
+
++-------------------+
+|      Order        |
++-------------------+
+| - orderId: int    |
+| - orderDate: string |
+| - totalAmount: float |
+| - status: string  |
+| - customerId: int |
++-------------------+
+| + calculateTotal() |
+| + addProduct()     |
+| + removeProduct()  |
+| + updateStatus()   |
++-------------------+
+

@@ -1,0 +1,8 @@
+| **Tên lớp (Class)**                                  | **Vai trò / Mô tả**                                                                                                                          |
+| ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Sach**                                             | Đại diện cho từng cuốn sách trong thư viện, lưu thông tin như **mã sách, tên sách, tác giả, năm xuất bản, tình trạng (còn/mượn)**.           |
+| **DocGia**                                           | Đại diện cho người sử dụng thư viện – **độc giả**, có thể **mượn và trả sách**, có các thuộc tính như mã độc giả, họ tên, thông tin liên hệ. |
+| **NhanVienThuVien**                                  | Đại diện cho **nhân viên thư viện**, người quản lý việc mượn – trả sách, cập nhật dữ liệu, theo dõi danh mục sách.                           |
+| **PhieuMuon**                                        | Đại diện cho **giao dịch mượn sách**, ghi lại **thông tin độc giả, sách, ngày mượn, ngày trả dự kiến**.                                      |
+| **PhieuTra** *(hoặc có thể gộp chung vào PhieuMuon)* | Đại diện cho **giao dịch trả sách**, lưu ngày trả thực tế và trạng thái sách khi hoàn trả.                                                   |
+| **ThuVien** *(tuỳ chọn)*                             | Đại diện cho **toàn hệ thống hoặc tập hợp dữ liệu**, quản lý danh sách sách, độc giả, nhân viên, và các phiếu mượn/trả.                      |

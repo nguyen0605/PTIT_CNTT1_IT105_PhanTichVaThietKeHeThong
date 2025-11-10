@@ -1,0 +1,7 @@
+| **Thành phần**      | **Modifier** | **Giải thích**                                                                                                                                            |
+| ------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **username**        | `private`    | Là thông tin cá nhân, chỉ nên được truy cập bên trong lớp `User` để tránh bị thay đổi trực tiếp từ bên ngoài.                                             |
+| **password**        | `private`    | Dữ liệu nhạy cảm, cần bảo mật tuyệt đối; chỉ được truy cập hoặc cập nhật thông qua phương thức nội bộ (như `resetPassword()`).                            |
+| **login()**         | `public`     | Là chức năng chính mà các đối tượng bên ngoài (như giao diện hoặc hệ thống xác thực) cần gọi để đăng nhập người dùng.                                     |
+| **resetPassword()** | `public`     | Cho phép bên ngoài (ví dụ hệ thống quản trị hoặc người dùng) kích hoạt việc đặt lại mật khẩu khi cần.                                                     |
+| **lastLoginTime**   | `protected`  | Thông tin có thể được lớp con (ví dụ `AdminUser`, `StudentUser`) truy cập để thống kê hoặc kiểm tra lần đăng nhập cuối. Không cần công khai ra bên ngoài. |
