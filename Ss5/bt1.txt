@@ -1,0 +1,57 @@
+1. Khách hàng (Customer)
+
+Loại: Actor (tác nhân ngoài hệ thống)
+
+Vai trò: Là người khởi đầu quá trình tương tác, gửi yêu cầu đến hệ thống (ví dụ: truy cập website, chọn sản phẩm, thực hiện thanh toán).
+
+Hành vi trong sơ đồ:
+
+Gửi thông điệp yêu cầu (Request) đến Website.
+
+Nhận phản hồi từ Website sau khi thanh toán thành công hoặc thất bại.
+
+Lifeline: Được biểu diễn bằng một đường thẳng dọc, bắt đầu từ lúc khách hàng gửi yêu cầu đầu tiên và kết thúc khi quá trình giao dịch hoàn tất.
+
+2. Website
+
+Loại: Object (đối tượng trong hệ thống)
+
+Vai trò: Trung gian giữa Khách hàng và Hệ thống thanh toán.
+
+Tiếp nhận yêu cầu từ Khách hàng.
+
+Kiểm tra thông tin sản phẩm, giỏ hàng, hoặc lệnh thanh toán.
+
+Gửi dữ liệu thanh toán đến Hệ thống thanh toán.
+
+Nhận phản hồi (kết quả giao dịch) và thông báo lại cho Khách hàng.
+
+Hành vi trong sơ đồ:
+
+Nhận thông điệp từ Actor (Khách hàng).
+
+Gửi thông điệp đến Object khác (Hệ thống thanh toán).
+
+Trả kết quả về cho Actor.
+
+Lifeline: Thể hiện quá trình hoạt động liên tục trong thời gian trao đổi thông điệp giữa Khách hàng và Hệ thống thanh toán.
+
+3. Hệ thống thanh toán (Payment System)
+
+Loại: Object (đối tượng nội bộ hoặc hệ thống phụ thuộc)
+
+Vai trò: Thực hiện các nghiệp vụ xác thực và xử lý thanh toán.
+
+Kiểm tra thông tin thẻ/tài khoản.
+
+Xác nhận giao dịch hợp lệ hoặc từ chối nếu phát hiện lỗi.
+
+Gửi kết quả xử lý về cho Website.
+
+Hành vi trong sơ đồ:
+
+Nhận yêu cầu thanh toán từ Website.
+
+Xử lý dữ liệu và trả về kết quả (thành công hoặc thất bại).
+
+Lifeline: Bắt đầu khi nhận thông điệp từ Website, kết thúc sau khi gửi phản hồi.
