@@ -1,0 +1,95 @@
+1. Các module chính theo nghiệp vụ
+
+SearchModule (Tìm chuyến bay)
+
+Chức năng:
+
+Tìm chuyến bay theo: điểm đi, điểm đến, ngày, hãng bay…
+
+Lọc, sắp xếp theo giá, giờ bay, thời gian bay.
+
+Cung cấp API cho các module khác lấy thông tin chuyến bay.
+
+BookingModule (Đặt vé)
+
+Chức năng:
+
+Chọn chuyến bay từ kết quả tìm kiếm.
+
+Nhập thông tin hành khách.
+
+Giữ chỗ tạm thời, tạo “đơn đặt vé”.
+
+Kiểm tra lại tình trạng ghế trước khi xác nhận.
+
+Phụ thuộc vào: SearchModule, AccountModule (nếu yêu cầu đăng nhập).
+
+PaymentModule (Thanh toán)
+
+Chức năng:
+
+Nhận thông tin đơn đặt vé từ BookingModule.
+
+Tính tổng tiền, phí, thuế.
+
+Tích hợp cổng thanh toán (VNPay, MOMO, v.v.).
+
+Cập nhật trạng thái thanh toán (thành công / thất bại).
+
+Phụ thuộc vào: BookingModule.
+
+AccountModule (Quản lý tài khoản)
+
+Chức năng:
+
+Đăng ký, đăng nhập, quên mật khẩu.
+
+Lưu thông tin cá nhân, danh sách hành khách thường xuyên.
+
+Lịch sử đặt vé, trạng thái chuyến bay.
+
+Cung cấp thông tin cho BookingModule và PaymentModule.
+
+(Tuỳ chọn) NotificationModule
+
+Gửi email/SMS thông báo đặt vé thành công, thay đổi lịch bay, v.v.
+
+Phụ thuộc vào: BookingModule, PaymentModule.
+
+2. Sơ đồ package/module (dạng text)
++--------------------------------------------------------+
+|                    ui (presentation)                   |
+|--------------------------------------------------------|
+|  SearchUI, BookingUI, PaymentUI, AccountUI             |
+|  -> Giao diện gọi sang các module nghiệp vụ            |
++------------------------------+-------------------------+
+                               |
+                               v
++--------------------------------------------------------+
+|                    bookingSystem (core)                |
+|--------------------------------------------------------|
+|  +-------------------+   +-------------------------+   |
+|  |  SearchModule     |   |   BookingModule        |   |
+|  |-------------------|   |-------------------------|  |
+|  | + searchFlights() |   | + createBooking()       |  |
+|  | + filterFlights() |   | + holdSeat()            |  |
+|  +-------------------+   | + confirmBooking()      |  |
+|                          +-------------------------+  |
+|                          ^           |                |
+|  +-------------------+   |           v                |
+|  |  AccountModule    |   |   +--------------------+  |
+|  |-------------------|   |   |  PaymentModule     |  |
+|  | + login()         |   |   |--------------------|  |
+|  | + register()      |   |   | + createPayment()  |  |
+|  | + getUserProfile()|---+   | + processPayment() |  |
+|  | + getBookings()   |       | + refund()         |  |
+|  +-------------------+       +--------------------+  |
+|                               |                     |
+|                               v                     |
+|                        +----------------------+     |
+|                        | NotificationModule   |     |
+|                        |----------------------|     |
+|                        | + sendEmail()        |     |
+|                        | + sendSMS()          |     |
+|                        +----------------------+     |
++--------------------------------------------------------+

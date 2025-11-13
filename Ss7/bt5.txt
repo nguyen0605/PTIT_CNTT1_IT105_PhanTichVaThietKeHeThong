@@ -1,0 +1,109 @@
+1. Phân rã theo kiến trúc 3 tầng
+1.1. Presentation Layer (Tầng giao diện)
+
+Các module:
+
+PostController / PostUI
+
+Màn hình danh sách bài viết, chi tiết bài, form tạo/sửa bài.
+
+CommentController / CommentUI
+
+Form thêm bình luận, sửa/xóa bình luận.
+
+UserController / UserUI
+
+Đăng ký, đăng nhập, trang hồ sơ, đổi mật khẩu.
+
+Vai trò: nhận request từ người dùng (HTTP/Web), gọi sang tầng Business, nhận kết quả và hiển thị.
+
+1.2. Business Logic Layer (Tầng nghiệp vụ)
+
+Các module:
+
+PostService
+
+Tạo/sửa/xóa bài viết.
+
+Validate nội dung, tiêu đề, quyền đăng/sửa/xóa.
+
+CommentService
+
+Thêm/sửa/xóa bình luận, kiểm tra quyền người dùng.
+
+UserService
+
+Đăng ký, đăng nhập (mã hóa mật khẩu), phân quyền (admin/user).
+
+(tuỳ chọn) AuthService tách riêng xử lý login, JWT, session.
+
+Vai trò: chứa toàn bộ logic nghiệp vụ blog (quy tắc xử lý), không dính SQL hay giao diện.
+
+1.3. Data Access Layer (Tầng truy cập dữ liệu)
+
+Các module:
+
+PostRepository
+
+CommentRepository
+
+UserRepository
+
+Vai trò:
+
+Thực thi các lệnh CRUD với DB (MySQL/PostgreSQL, v.v.):
+
+INSERT, SELECT, UPDATE, DELETE cho bảng Posts, Comments, Users.
+
+Che giấu chi tiết kết nối DB, ORM, driver.
+
+2. Sơ đồ package / module (dạng text)
++--------------------------------------------------------+
+|                    presentation                        |
+|--------------------------------------------------------|
+|  PostController                                        |
+|  CommentController                                     |
+|  UserController                                        |
+|  -> gọi sang tầng business                             |
++------------------------------+-------------------------+
+                               |
+                               v
++--------------------------------------------------------+
+|                    business                            |
+|--------------------------------------------------------|
+|  PostService                                           |
+|    + createPost()                                      |
+|    + updatePost()                                      |
+|    + deletePost()                                      |
+|    + getPostById()                                     |
+|    + listPosts()                                       |
+|                                                        |
+|  CommentService                                        |
+|    + addComment()                                      |
+|    + updateComment()                                   |
+|    + deleteComment()                                   |
+|    + listCommentsByPost()                              |
+|                                                        |
+|  UserService                                           |
+|    + register()                                        |
+|    + login()                                           |
+|    + getUserProfile()                                  |
+|    + changeRole() (phân quyền)                         |
++------------------------------+-------------------------+
+                               |
+                               v
++--------------------------------------------------------+
+|                    dataaccess                          |
+|--------------------------------------------------------|
+|  PostRepository                                        |
+|    + insert() / update() / delete()                    |
+|    + findById() / findAll()                            |
+|                                                        |
+|  CommentRepository                                     |
+|    + insert() / update() / delete()                    |
+|    + findByPostId()                                    |
+|                                                        |
+|  UserRepository                                        |
+|    + insert() / update()                               |
+|    + findById() / findByUsername()                     |
++--------------------------------------------------------+

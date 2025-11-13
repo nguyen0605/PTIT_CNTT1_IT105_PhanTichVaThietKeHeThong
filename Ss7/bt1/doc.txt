@@ -1,0 +1,151 @@
+1. Các thành phần chính trong kiến trúc
+1.1. Frontend (Web + Mobile)
+
+a) Web Frontend
+
+Chạy trên trình duyệt (Chrome, Edge, …).
+
+Thường là SPA (React, Angular, Vue, …).
+
+Chức năng chính:
+
+Hiển thị danh sách sản phẩm, chi tiết sản phẩm.
+
+Cho phép khách hàng:
+
+Tìm kiếm sản phẩm.
+
+Thêm/xóa sản phẩm khỏi giỏ hàng.
+
+Đăng ký/đăng nhập.
+
+Nhập thông tin giao hàng, chọn phương thức thanh toán.
+
+Xem lịch sử đơn hàng, cập nhật thông tin cá nhân.
+
+b) Mobile Frontend (App Mobile)
+
+Ứng dụng Android/iOS (native hoặc cross-platform như React Native, Flutter).
+
+Chức năng tương tự Web:
+
+Dùng chung API với Web (không tự xử lý logic nghiệp vụ nặng).
+
+Hỗ trợ thêm:
+
+Push notification (đơn hàng được xác nhận, trạng thái giao hàng, khuyến mãi).
+
+Lưu cache offline một số thông tin (sản phẩm đã xem, giỏ hàng tạm thời,…).
+
+Cả Web và Mobile chỉ gọi API và hiển thị giao diện, không xử lý nghiệp vụ phức tạp.
+
+1.2. Backend (API + Logic nghiệp vụ)
+
+Đây là “trái tim” của hệ thống.
+
+Thành phần:
+
+API Gateway / Backend API
+
+Expose các endpoint REST/GraphQL:
+
+POST /auth/login, POST /auth/register
+
+GET /products, GET /products/{id}
+
+POST /cart, POST /orders/checkout, GET /orders
+
+PUT /users/profile, …
+
+Nhận request từ Web/Mobile, xác thực token, chuyển tiếp đến các module nghiệp vụ.
+
+Các module logic nghiệp vụ (Business Services)
+Một số module thường có:
+
+Auth Service (Xác thực & Phân quyền)
+
+Đăng ký, đăng nhập, cấp token (JWT).
+
+Mã hóa mật khẩu, quản lý phiên đăng nhập.
+
+Product Service (Sản phẩm)
+
+CRUD sản phẩm (dành cho admin).
+
+Lọc, tìm kiếm, phân trang, xử lý tồn kho khi đặt hàng.
+
+Cart & Order Service (Giỏ hàng & Đơn hàng)
+
+Quản lý giỏ hàng cho từng user.
+
+Tạo đơn hàng khi khách thanh toán.
+
+Cập nhật trạng thái đơn hàng (đang xử lý, đang giao, hoàn thành, hủy).
+
+User Profile Service (Thông tin cá nhân khách hàng)
+
+Lưu và cập nhật địa chỉ, số điện thoại, email,…
+
+Lịch sử đơn hàng.
+
+Admin / Backoffice Service (Quản trị)
+
+Quản lý sản phẩm, danh mục.
+
+Xem danh sách đơn hàng, doanh thu, báo cáo.
+
+Backend kết nối với Database và gọi các dịch vụ bên ngoài (External Services).
+
+1.3. Database (Lưu trữ dữ liệu)
+
+Thường gồm:
+
+CSDL quan hệ (MySQL, PostgreSQL, SQL Server, …)
+
+Bảng Users: thông tin tài khoản.
+
+Bảng Products: sản phẩm, giá, tồn kho, mô tả, ảnh,…
+
+Bảng Categories: nhóm sản phẩm.
+
+Bảng Carts: giỏ hàng tạm của từng user.
+
+Bảng Orders & OrderItems: đơn hàng & chi tiết từng sản phẩm.
+
+Bảng Payments: lưu thông tin thanh toán (trạng thái, mã giao dịch).
+
+(Có thể có) Database NoSQL / Cache (Redis, MongoDB, …)
+
+Dùng để cache dữ liệu đọc nhiều: danh sách sản phẩm hot, giảm tải cho DB.
+
+1.4. External Services (Các dịch vụ bên ngoài)
+
+Hệ thống thường tích hợp các dịch vụ:
+
+Payment Gateway (Cổng thanh toán)
+
+VNPay, MoMo, ZaloPay, Stripe,…
+
+Backend gọi cổng thanh toán để tạo giao dịch.
+
+Sau khi thanh toán, cổng gửi callback lại cho Backend để cập nhật trạng thái đơn hàng.
+
+Shipping / Logistics (Giao vận)
+
+Giao Hàng Nhanh, Giao Hàng Tiết Kiệm, Viettel Post,…
+
+Backend gửi thông tin đơn hàng, địa chỉ => tạo mã vận đơn.
+
+Nhận lại thông tin tracking, trạng thái giao hàng.
+
+Email/SMS Service
+
+Gửi email xác nhận đơn hàng, email khuyến mãi, OTP.
+
+Gửi SMS thông báo (nếu cần).
+
+Push Notification Service (cho Mobile)
+
+Firebase Cloud Messaging (FCM), OneSignal,…
+
+Gửi thông báo: “Đơn hàng #123 đã được xác nhận”, “Khuyến mãi 50%”.

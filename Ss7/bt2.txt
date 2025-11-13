@@ -1,0 +1,145 @@
+1. Kiến trúc 3 tầng cho hệ thống quản lý kho
+1.1. Tầng Presentation (Presentation Tier)
+
+Giao diện Web/Mobile, nơi nhân viên kho, quản lý sử dụng.
+
+Nhiệm vụ:
+
+Nhận input từ người dùng (form thêm sản phẩm, phiếu nhập, phiếu xuất…)
+
+Gửi yêu cầu lên Business Logic Tier
+
+Hiển thị kết quả (danh sách sản phẩm, tồn kho, lịch sử nhập–xuất).
+
+Có thể có các màn hình/chức năng:
+
+ProductUI – màn hình quản lý sản phẩm.
+
+SupplierUI – màn hình quản lý nhà cung cấp.
+
+InventoryUI – màn hình nhập – xuất – xem tồn kho.
+
+1.2. Tầng Business Logic (Business Logic Tier)
+
+Chứa logic nghiệp vụ của quản lý kho.
+
+Không quan tâm giao diện hay DB cụ thể, chỉ tập trung đúng quy tắc nghiệp vụ.
+
+Các chức năng chính:
+
+Quản lý sản phẩm
+
+Kiểm tra dữ liệu khi thêm/sửa/xóa.
+
+Không cho xóa sản phẩm nếu còn tồn kho hoặc đang gắn với chứng từ.
+
+Quản lý nhà cung cấp
+
+Tạo/cập nhật thông tin nhà cung cấp.
+
+Gắn đơn đặt hàng (Purchase Order) với nhà cung cấp.
+
+Nhập – Xuất kho
+
+Khi nhập: tăng tồn kho.
+
+Khi xuất: kiểm tra đủ số lượng, giảm tồn kho.
+
+Tính tồn kho theo công thức:
+
+Tồn = Tồn đầu kỳ + Tổng nhập – Tổng xuất
+
+Các lớp tiêu biểu:
+
+ProductService
+
+SupplierService
+
+InventoryService
+
+Các lớp domain:
+
+Product
+
+Supplier
+
+PurchaseOrder (Đơn đặt hàng từ nhà cung cấp)
+
+StockTransaction (phiếu nhập/xuất)
+
+1.3. Tầng Data Access (Data Access Tier)
+
+Làm việc trực tiếp với DB (MySQL/PostgreSQL…).
+
+Cung cấp các hàm CRUD cho tầng Business.
+
+Che giấu chi tiết SQL, driver, connection…
+
+Các lớp tiêu biểu:
+
+ProductRepository
+
+SupplierRepository
+
+PurchaseOrderRepository
+
+StockTransactionRepository
+
+Tương ứng các bảng trong DB:
+
+Products(id, name, unit, price, ... )
+
+Suppliers(id, name, address, phone, ...)
+
+PurchaseOrders(id, supplier_id, date, status, ...)
+
+StockTransactions(id, product_id, type(IN/OUT), quantity, date, ref_doc, ...)
+
+2. Sơ đồ package phân tầng (dạng text)
++--------------------------------------------------------------+
+|                      presentation                           |
+|--------------------------------------------------------------|
+|  ProductUI        -> màn hình quản lý sản phẩm               |
+|  SupplierUI       -> màn hình quản lý nhà cung cấp           |
+|  InventoryUI      -> màn hình nhập/xuất, xem tồn kho         |
++----------------------------+---------------------------------+
+                             |
+                             | gọi service (Business Logic)
+                             v
++--------------------------------------------------------------+
+|                      business                                |
+|--------------------------------------------------------------|
+|  ProductService                                              |
+|    + addProduct()                                            |
+|    + updateProduct()                                         |
+|    + deleteProduct()                                         |
+|                                                              |
+|  SupplierService                                             |
+|    + addSupplier()                                           |
+|    + updateSupplier()                                        |
+|                                                              |
+|  InventoryService                                            |
+|    + importStock()   // nhập kho                             |
+|    + exportStock()   // xuất kho                             |
+|    + getCurrentStock(productId)                              |
+|                                                              |
+|  Domain classes:                                             |
+|    Product, Supplier, PurchaseOrder, StockTransaction        |
++----------------------------+---------------------------------+
+                             |
+                             | gọi repository (Data Access)
+                             v
++--------------------------------------------------------------+
+|                      dataaccess                              |
+|--------------------------------------------------------------|
+|  ProductRepository                                           |
+|    + findById()                                              |
+|    + findAll()                                               |
+|    + insert() / update() / delete()                          |
+|                                                              |
+|  SupplierRepository                                          |
+|  PurchaseOrderRepository                                     |
+|  StockTransactionRepository                                  |
+|                                                              |
+|  (Thực hiện truy vấn SQL tới DB MySQL/PostgreSQL)            |
++--------------------------------------------------------------+

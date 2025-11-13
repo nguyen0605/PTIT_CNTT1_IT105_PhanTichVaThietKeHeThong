@@ -1,0 +1,135 @@
+1. Các thành phần chính trong hệ thống bán lẻ
+1. Presentation Layer (Client)
+
+Web/Mobile/POS UI
+
+Nhân viên bán hàng: tạo đơn, xem tồn kho, xác nhận thanh toán.
+
+Khách hàng: đặt hàng, thanh toán online.
+
+Gửi request HTTP (REST/JSON) xuống backend.
+
+2. Backend Application (Core System)
+
+API Gateway / Backend API
+
+Nhận mọi request từ client.
+
+Xác thực người dùng, định tuyến tới các service bên trong.
+
+Inventory Service (Quản lý tồn kho)
+
+Quản lý số lượng sản phẩm theo từng kho.
+
+Khi tạo đơn / thanh toán thành công:
+
+Giảm tồn kho.
+
+Khi hủy đơn:
+
+Cộng lại tồn kho.
+
+Đọc/ghi dữ liệu sang bảng Products, Inventory.
+
+Order Service (Quản lý đơn hàng)
+
+Tạo đơn hàng từ giỏ hàng.
+
+Lưu trạng thái đơn: PENDING, PAID, CANCELED,...
+
+Gọi Inventory Service để kiểm tra tồn kho trước khi cho thanh toán.
+
+Payment Service (Thanh toán online – VNPay)
+
+Nhận yêu cầu thanh toán từ Order Service.
+
+Tạo giao dịch với VNPay:
+
+Gửi request sang VNPay (tổng tiền, mã đơn hàng, callback URL).
+
+Nhận callback từ VNPay:
+
+Nếu thành công → cập nhật đơn hàng sang PAID, gọi Inventory Service giảm kho.
+
+Gửi thông tin cho Email Service để gửi xác nhận.
+
+Email/Notification Service
+
+Sau khi thanh toán thành công:
+
+Gửi email xác nhận đơn hàng cho khách qua SMTP server.
+
+Có thể gửi thêm email báo hết hàng, thông báo cho admin,…
+
+3. Data Layer (Database)
+
+Relational Database (MySQL/PostgreSQL, …)
+
+Products(product_id, name, price, stock, ...)
+
+Inventory(warehouse_id, product_id, quantity, ...)
+
+Orders(order_id, customer_id, status, total_amount, ...)
+
+OrderItems(order_id, product_id, quantity, price, ...)
+
+Payments(payment_id, order_id, method, status, transaction_code, ...)
+
+Users(user_id, name, email, ...)
+
+4. External Services (Dịch vụ ngoài)
+
+VNPay (Payment Gateway)
+
+Xử lý thanh toán online bằng thẻ ngân hàng, ví, QR.
+
+Backend gọi API VNPay để:
+
+Tạo URL thanh toán.
+
+Nhận kết quả giao dịch (callback/return URL).
+
+SMTP Email Service
+
+Có thể là Gmail SMTP, SendGrid, Mailgun,...
+
+Email Service trong backend gửi:
+
+Email xác nhận đơn hàng.
+
+Hoá đơn điện tử (nếu có).
+
+5. Sơ đồ kiến trúc tổng thể (dạng text)
+                +------------------------------+
+                |        CLIENT (UI)          |
+                |  - Web / Mobile / POS       |
+                +---------------+--------------+
+                                |
+                                | HTTP (REST/JSON)
+                                v
++---------------------------------------------------------------+
+|                     BACKEND APPLICATION                       |
+|---------------------------------------------------------------|
+|  +---------------------+    +-----------------------------+   |
+|  |  API Gateway / API  |    |    Email Service           |   |
+|  +---------+-----------+    +-------------+---------------+   |
+|            |                               |                   |
+|   +--------v---------+      +-------------v--------------+    |
+|   |   Order Service  |<---->|   Payment Service          |    |
+|   +--------+---------+      +-------------+--------------+    |
+|            |                               |                   |
+|   +--------v---------+                     |                   |
+|   | Inventory Service|                     |                   |
+|   +------------------+                     |                   |
++----------------------+---------------------+-------------------+
+                       |                     |
+                       | SQL Query           | Gọi API ngoài
+                       v                     v
+            +------------------+     +---------------------------+
+            |     DATABASE     |     |      EXTERNAL SERVICES    |
+            |  Products        |     |  VNPay (Payment Gateway)  |
+            |  Inventory       |     |  SMTP Email Server        |
+            |  Orders          |     +---------------------------+
+            |  OrderItems      |
+            |  Payments        |
+            +------------------+

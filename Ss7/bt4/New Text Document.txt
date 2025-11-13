@@ -1,0 +1,98 @@
+3. Chi tiết các lớp & method
+3.1. Lớp OrderService (Business Layer)
+class OrderService {
+    - orderRepository OrderRepository
+
+    + createOrder(orderData OrderDTO) Order
+    + getOrderById(orderId int) Order
+    + getOrdersByCustomer(customerId int) ListOrder
+    + cancelOrder(orderId int) void
+    + updateOrderStatus(orderId int, status OrderStatus) void
+    + calculateTotal(order Order) decimal
+    + validateOrder(order Order) boolean
+}
+
+
+Mô tả method
+
+createOrder(orderData)
+
+Nhận dữ liệu từ Presentation (giỏ hàng, thông tin khách).
+
+Gọi validateOrder, calculateTotal.
+
+Nếu hợp lệ → tạo Order mới → nhờ orderRepository.insert() lưu DB → trả về Order.
+
+getOrderById(orderId)
+
+Gọi orderRepository.findById(orderId) lấy thông tin đơn hàng.
+
+getOrdersByCustomer(customerId)
+
+Lấy danh sách đơn của 1 khách gọi orderRepository.findByCustomerId(customerId).
+
+cancelOrder(orderId)
+
+Kiểm tra trạng thái đơn (chỉ cho hủy nếu chưa giaođang xử lý).
+
+Cập nhật trạng thái → gọi orderRepository.updateStatus(orderId, CANCELED).
+
+updateOrderStatus(orderId, status)
+
+Logic đổi trạng thái (PENDING → PAID → SHIPPED → COMPLETED…).
+
+Gọi repository để lưu lại.
+
+calculateTotal(order)
+
+Tính tổng tiền từ các dòng hàng (OrderItem), thuế, phí ship…
+
+validateOrder(order)
+
+Kiểm tra dữ liệu còn hàng không, thông tin khách có đủ không, tổng tiền  0,…
+
+Trả về truefalse (hoặc ném exception nếu lỗi).
+
+3.2. Lớp OrderRepository (Data Layer)
+class OrderRepository {
+
+    + insert(order Order) int
+    + findById(orderId int) Order
+    + findByCustomerId(customerId int) ListOrder
+    + update(order Order) void
+    + updateStatus(orderId int, status OrderStatus) void
+    + delete(orderId int) void
+}
+
+
+Mô tả method
+
+insert(order)
+
+Thực hiện câu lệnh INSERT INTO Orders...
+
+Trả về orderId mới sinh (hoặc Order đầy đủ).
+
+findById(orderId)
+
+SELECT  FROM Orders WHERE id = 
+
+Map dữ liệu DB → đối tượng Order.
+
+findByCustomerId(customerId)
+
+SELECT  FROM Orders WHERE customer_id = 
+
+Trả về danh sách Order của khách.
+
+update(order)
+
+Cập nhật các thông tin đơn hàng (địa chỉ giao, ghi chú,…).
+
+updateStatus(orderId, status)
+
+Cập nhật cột status của bản ghi tương ứng.
+
+delete(orderId)
+
+Xóa đơn hàng (thường chỉ dùng cho testhoặc admin – tùy chính sách).
