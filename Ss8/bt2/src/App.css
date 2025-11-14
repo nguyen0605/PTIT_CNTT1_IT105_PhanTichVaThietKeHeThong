@@ -1,0 +1,193 @@
+#root {
+  margin: 0;
+  min-height: 100vh;
+  padding: clamp(1rem, 5vw, 3rem);
+  background: linear-gradient(180deg, #eef3ff 0%, #f8f9fb 100%);
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  color: #0f172a;
+}
+
+.orders-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.page-header {
+  background: #ffffff;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+}
+
+.page-header .eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0 0 0.5rem;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.page-header .lead {
+  margin: 0.75rem 0 0;
+  color: #475467;
+  max-width: 620px;
+}
+
+.table-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.table-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.table-card__head h2 {
+  margin: 0;
+}
+
+.table-card__head p {
+  margin: 0.2rem 0 0;
+  color: #64748b;
+}
+
+.ghost-btn {
+  border: 1px solid #d0d5dd;
+  background: transparent;
+  color: #0f172a;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+th,
+td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.95rem;
+}
+
+th {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #475467;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', 'Fira Mono', 'SFMono-Regular', Consolas, monospace;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.9rem;
+}
+
+.status-processing {
+  color: #b45309;
+  background: #fff4db;
+  border: 1px solid #facc15;
+}
+
+.status-completed {
+  color: #0f766e;
+  background: #d1fae5;
+  border: 1px solid #34d399;
+}
+
+.status-cancelled {
+  color: #b91c1c;
+  background: #fee2e2;
+  border: 1px solid #f87171;
+}
+
+.detail-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem 0.9rem;
+  background-color: #eef2ff;
+  color: #3730a3;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.pagination button {
+  border: 1px solid #d0d5dd;
+  background-color: #fff;
+  color: #111322;
+  padding: 0.6rem 1.1rem;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  border-color: #e2e8f0;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.pagination p {
+  margin: 0;
+  color: #475467;
+}
+
+@media (max-width: 720px) {
+  .table-card__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pagination {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

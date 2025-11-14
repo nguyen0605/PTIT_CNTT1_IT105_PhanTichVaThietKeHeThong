@@ -1,0 +1,67 @@
+.orders-wrapper {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 16px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eef2f5;
+  font-size: 14px;
+}
+
+.orders-table thead th {
+  text-align: left;
+  color: #334155;
+}
+
+.cell-center { text-align: center; }
+.cell-left { text-align: left; }
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 16px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+}
+.status-completed { background: #007bff; }
+.status-processing { background: #f59e0b; }
+.status-cancelled { background: #ef4444; }
+
+.detail-btn {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.detail-btn:hover { background: #f8fafc; }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+.page-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  cursor: pointer;
+}
+.page-btn[disabled] { opacity: 0.5; cursor: default; }
+.page-info { color: #475569; font-weight: 600; }
