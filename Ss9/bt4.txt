@@ -1,0 +1,28 @@
+1. Thực thể: USER
+| **Entity** | **Attribute** | **Kiểu dữ liệu**                       | **Vai trò**                                  |
+| ---------- | ------------- | -------------------------------------- | -------------------------------------------- |
+| User       | UserID        | INT                                    | Khóa chính định danh người dùng duy nhất.    |
+| User       | FullName      | VARCHAR(100)                           | Tên hiển thị của người dùng.                 |
+| User       | Email         | VARCHAR(100)                           | Email đăng nhập, dùng để xác thực tài khoản. |
+| User       | Role          | ENUM('student', 'instructor', 'admin') | Xác định loại người dùng trong hệ thống.     |
+| User       | CreatedAt     | DATETIME                               | Thời điểm tạo tài khoản. *(thuộc tính thêm)* |
+
+
+2. Thực thể: COURSE
+| **Entity** | **Attribute** | **Kiểu dữ liệu**       | **Vai trò**                                      |
+| ---------- | ------------- | ---------------------- | ------------------------------------------------ |
+| Course     | CourseID      | INT                    | Khóa chính định danh khóa học.                   |
+| Course     | Title         | VARCHAR(150)           | Tên khóa học hiển thị cho người dùng.            |
+| Course     | Description   | TEXT                   | Mô tả nội dung khóa học.                         |
+| Course     | InstructorID  | INT (FK → User.UserID) | Xác định giảng viên quản lý khóa học.            |
+| Course     | CreatedAt     | DATETIME               | Thời điểm khóa học được tạo. *(thuộc tính thêm)* |
+
+
+3. Thực thể: ENROLLMENT
+| **Entity** | **Attribute** | **Kiểu dữ liệu**                      | **Vai trò**                                 |
+| ---------- | ------------- | ------------------------------------- | ------------------------------------------- |
+| Enrollment | EnrollmentID  | INT                                   | Khóa chính phân biệt từng lượt đăng ký học. |
+| Enrollment | UserID        | INT (FK → User.UserID)                | Người dùng đăng ký khóa học.                |
+| Enrollment | CourseID      | INT (FK → Course.CourseID)            | Khóa học mà người dùng đăng ký.             |
+| Enrollment | EnrollDate    | DATETIME                              | Thời điểm đăng ký khóa học.                 |
+| Enrollment | Status        | ENUM('active','completed','canceled') | Trạng thái đăng ký học. *(thuộc tính thêm)* |

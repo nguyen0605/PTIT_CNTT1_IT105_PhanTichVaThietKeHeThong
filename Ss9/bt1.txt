@@ -1,0 +1,7 @@
+| **Tên thực thể**      | **Miêu tả vai trò**                                                                                                                                                               |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Sách**              | Là đối tượng chứa thông tin chi tiết về từng cuốn sách như tên, giá, mô tả, thể loại, năm xuất bản. Đây là sản phẩm chính được hệ thống quản lý và bán cho khách hàng.            |
+| **Tác giả**           | Lưu trữ thông tin về các tác giả viết sách (tên, tiểu sử,…). Một tác giả có thể viết nhiều sách; một cuốn sách có thể có nhiều tác giả (quan hệ N–N).                             |
+| **Khách hàng**        | Là người mua sách. Thực thể này chứa thông tin cá nhân của khách hàng như họ tên, email, số điện thoại, địa chỉ,… và được dùng trong quá trình đặt hàng.                          |
+| **Đơn hàng**          | Đại diện cho một giao dịch mua hàng của khách hàng. Chứa thông tin như ngày đặt, tổng tiền, phương thức thanh toán, trạng thái đơn hàng,…                                         |
+| **Chi tiết đơn hàng** | Là thực thể mô tả từng sản phẩm cụ thể trong một đơn hàng. Bao gồm mã sách, số lượng, đơn giá, thành tiền,… và đóng vai trò liên kết giữa **Đơn hàng** và **Sách** (quan hệ 1–N). |

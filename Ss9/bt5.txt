@@ -1,0 +1,36 @@
+| STT | Thực thể 1 | Thực thể 2 | Mô tả ngắn                                                                  | Kiểu quan hệ |
+| --- | ---------- | ---------- | --------------------------------------------------------------------------- | ------------ |
+| 1   | Student    | StudentID  | Một sinh viên có đúng một mã sinh viên, một mã chỉ gắn cho một sinh viên    | **1 – 1**    |
+| 2   | Customer   | Order      | Một khách hàng có thể có nhiều đơn hàng, mỗi đơn hàng thuộc về 1 khách hàng | **1 – N**    |
+| 3   | Student    | Subject    | Một sinh viên học nhiều môn, mỗi môn có nhiều sinh viên                     | **N – N**    |
+
+Chi tiết từng tình huống
+1. Sinh viên – Mã sinh viên
+
+Mô tả:
+Một sinh viên chỉ có một mã sinh viên duy nhất.
+Một mã sinh viên chỉ dùng cho một sinh viên.
+
+Kiểu quan hệ: 👉 1 – 1
+Lý do: Không thể có 2 mã cho 1 sinh viên, cũng không thể có 1 mã dùng chung cho 2 sinh viên.
+
+2. Khách hàng – Đơn hàng
+
+Mô tả:
+Một khách hàng có thể đặt nhiều đơn hàng.
+Mỗi đơn hàng chỉ thuộc về một khách hàng.
+
+Kiểu quan hệ: 👉 1 – N
+Lý do:
+Một khách hàng có thể mua nhiều lần → nhiều đơn hàng.
+Nhưng mỗi đơn hàng khi lưu trong hệ thống chỉ gắn với đúng một khách hàng đặt nó.
+
+3. Sinh viên – Môn học
+
+Mô tả:
+Một sinh viên có thể học nhiều môn.
+Một môn học có thể có nhiều sinh viên.
+
+Kiểu quan hệ: 👉 N – N
+Lý do:
+Không giới hạn số môn một sinh viên học, và mỗi môn thường có cả lớp sinh viên cùng đăng ký.

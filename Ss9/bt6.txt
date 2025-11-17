@@ -1,0 +1,73 @@
+Bảng Order_1NF
+| Mã hóa đơn (PK*) | Tên KH | SĐT        | Sản phẩm | Tổng tiền |
+| ---------------- | ------ | ---------- | -------- | --------- |
+| HD001            | An     | 0912345678 | Bút bi   | 50,000    |
+| HD001            | An     | 0912345678 | Vở       | 50,000    |
+| HD001            | An     | 0912345678 | Thước    | 50,000    |
+| HD002            | Bình   | 0987654321 | Sách     | 80,000    |
+| HD002            | Bình   | 0987654321 | Bút chì  | 80,000    |
+Ở 1NF, khóa chính có thể là (Mã hóa đơn, Sản phẩm) vì một mã hóa đơn có nhiều sản phẩm.
+
+PK (tạm): (Mã hóa đơn, Sản phẩm)
+
+2NF:
+
+Bảng phải ở 1NF
+
+Không có phụ thuộc bộ phận vào khóa chính hỗn hợp.
+
+Ở bảng Order_1NF:
+
+Khóa chính: (Mã hóa đơn, Sản phẩm)
+
+Thuộc tính Tổng tiền, Tên KH, SĐT
+👉 chỉ phụ thuộc vào Mã hóa đơn, không phụ thuộc vào Sản phẩm
+→ phụ thuộc bộ phận → vi phạm 2NF.
+
+➜ Tách bảng:
+1) Bảng Hóa đơn – Invoice
+| InvoiceID (PK) | Tên KH | SĐT        | Tổng tiền |
+| -------------- | ------ | ---------- | --------- |
+| HD001          | An     | 0912345678 | 50,000    |
+| HD002          | Bình   | 0987654321 | 80,000    |
+PK: InvoiceID (Mã hóa đơn)
+2) Bảng Chi tiết hóa đơn – InvoiceDetail
+| InvoiceID (PK, FK) | Sản phẩm (PK) |
+| ------------------ | ------------- |
+| HD001              | Bút bi        |
+| HD001              | Vở            |
+| HD001              | Thước         |
+| HD002              | Sách          |
+| HD002              | Bút chì       |
+PK: (InvoiceID, Sản phẩm)
+
+FK: InvoiceID tham chiếu Invoice(InvoiceID)
+
+3NF – Các bảng cuối cùng
+1) Bảng Customer
+| Phone (PK) | Tên KH |
+| ---------- | ------ |
+| 0912345678 | An     |
+| 0987654321 | Bình   |
+PK: Phone (hoặc có thể tạo CustomerID riêng, nhưng ở đây tận dụng SĐT).
+
+2) Bảng Invoice
+| InvoiceID (PK) | Phone (FK) | Tổng tiền |
+| -------------- | ---------- | --------- |
+| HD001          | 0912345678 | 50,000    |
+| HD002          | 0987654321 | 80,000    |
+PK: InvoiceID
+
+FK: Phone tham chiếu Customer(Phone)
+
+3) Bảng InvoiceDetail (giữ nguyên như ở 2NF)
+| InvoiceID (PK, FK) | Sản phẩm (PK) |
+| ------------------ | ------------- |
+| HD001              | Bút bi        |
+| HD001              | Vở            |
+| HD001              | Thước         |
+| HD002              | Sách          |
+| HD002              | Bút chì       |
+PK: (InvoiceID, Sản phẩm)
+
+FK: InvoiceID → Invoice(InvoiceID)
