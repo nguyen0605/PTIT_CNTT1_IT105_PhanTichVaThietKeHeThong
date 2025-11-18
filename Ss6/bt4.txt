@@ -1,0 +1,51 @@
+1. Loại hệ thống thông tin phù hợp
+
+Với bài toán quản lý giao hàng online gồm: cập nhật đơn, theo dõi trạng thái, phân tích tuyến đường ⇒ có thể gắn với nhiều loại hệ thống thông tin:
+
+TPS (Transaction Processing System) – Hệ thống xử lý giao dịch
+
+Dùng để:
+
+Tạo đơn hàng mới
+
+Cập nhật trạng thái đơn (đã nhận, đang giao, giao thành công, giao thất bại…)
+→ Mọi thao tác “tạo / cập nhật / ghi nhận” đơn đều là giao dịch ⇒ TPS là lõi chính.
+
+MIS (Management Information System) – Hệ thống thông tin quản lý
+
+Dùng để:
+
+Tổng hợp báo cáo số đơn theo ngày/tháng
+
+Tỷ lệ giao đúng hẹn, năng suất từng tài xế/khu vực
+→ Phục vụ quản lý – giám sát – báo cáo cho cấp quản lý.
+
+DSS (Decision Support System) – Hệ thống hỗ trợ ra quyết định
+
+Dùng cho chức năng:
+
+Phân tích tuyến đường, đề xuất tuyến tối ưu
+
+Hỗ trợ lập kế hoạch giao hàng (gom đơn theo khu vực, tối ưu quãng đường, thời gian)
+→ Đây là bài toán tối ưu – ra quyết định, nên phù hợp với DSS.
+
+👉 Kết luận ngắn gọn có thể ghi trong bài:
+
+Hệ thống quản lý giao hàng online là sự kết hợp của TPS (xử lý đơn hàng), MIS (báo cáo quản lý) và DSS (phân tích, tối ưu tuyến đường), trong đó TPS là hệ thống lõi.
+
+2. Mô hình phát triển phần mềm phù hợp
+Gợi ý chính: Agile (Scrum)
+
+Lý do chọn Agile:
+
+Nhu cầu của doanh nghiệp logistics thường thay đổi liên tục: thêm loại dịch vụ mới, thay đổi quy trình giao nhận, tích hợp đối tác vận chuyển…
+
+Chức năng phân tích tuyến đường, tối ưu vận chuyển cần thử nghiệm, cải tiến theo thực tế ⇒ rất phù hợp phát triển theo vòng lặp (iteration).
+
+Cần ra sản phẩm sớm (MVP):
+
+Sprint 1: quản lý đơn + theo dõi trạng thái (TPS)
+
+Sprint 2: báo cáo cho quản lý (MIS)
+
+Sprint 3+: tính năng phân tích tuyến đường (DSS) nâng cao

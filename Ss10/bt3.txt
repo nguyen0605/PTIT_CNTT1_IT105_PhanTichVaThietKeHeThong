@@ -1,0 +1,5 @@
+| **Mô tả yêu cầu**                                | **Thuộc phần nào trong SRS** | **Giải thích**                                                                                                                               |
+| ------------------------------------------------ | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **“Hệ thống hỗ trợ 5.000 user online”**          | **Performance Requirements** | Đây là yêu cầu về **hiệu năng**, mô tả số lượng người dùng đồng thời (concurrency). Không phải chức năng mà là chỉ số kỹ thuật đo được.      |
+| **“Người dùng được phép xem lịch sử giao dịch”** | **Functional Requirements**  | Đây là một **chức năng** cụ thể mà hệ thống phải cung cấp cho người dùng → hành vi của hệ thống → thuộc functional.                          |
+| **“Chức năng này cần bảo mật cấp cao”**          | **Security Requirements**    | Từ khóa “bảo mật cấp cao” mô tả yêu cầu về **security**: quyền truy cập, bảo vệ dữ liệu, mức độ an toàn. Không phải chức năng hay hiệu năng. |

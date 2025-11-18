@@ -1,0 +1,41 @@
+1. Bảng users (lưu thông tin người học)
+| Tên bảng | Tên cột       | Kiểu dữ liệu                      | Mô tả                              | Ghi chú |
+| -------- | ------------- | --------------------------------- | ---------------------------------- | ------- |
+| users    | user_id       | INT AUTO_INCREMENT                | Mã người dùng                      | PK      |
+|          | full_name     | VARCHAR(100)                      | Họ và tên                          |         |
+|          | email         | VARCHAR(100)                      | Email đăng nhập                    | UNIQUE  |
+|          | password_hash | VARCHAR(255)                      | Mật khẩu (đã mã hóa)               |         |
+|          | role          | ENUM('student','teacher','admin') | Vai trò người dùng                 |         |
+|          | created_at    | DATETIME                          | Thời gian tạo tài khoản            |         |
+|          | status        | TINYINT                           | Trạng thái (1: hoạt động, 0: khóa) |         |
+2. Bảng courses (lưu thông tin khóa học)
+| Tên bảng | Tên cột      | Kiểu dữ liệu       | Mô tả                    | Ghi chú            |
+| -------- | ------------ | ------------------ | ------------------------ | ------------------ |
+| courses  | course_id    | INT AUTO_INCREMENT | Mã khóa học              | PK                 |
+|          | course_name  | VARCHAR(150)       | Tên khóa học             |                    |
+|          | description  | TEXT               | Mô tả ngắn về khóa học   |                    |
+|          | teacher_id   | INT                | Giảng viên phụ trách     | FK → users.user_id |
+|          | start_date   | DATE               | Ngày bắt đầu             |                    |
+|          | end_date     | DATE               | Ngày kết thúc            |                    |
+|          | max_students | INT                | Số lượng học viên tối đa |                    |
+|          | created_at   | DATETIME           | Thời gian tạo khóa       |                    |
+|          | status       | TINYINT            | 1: Mở đăng ký, 0: Đóng   |                    |
+3. Bảng enrollments (đăng ký khóa học)
+| Tên bảng    | Tên cột        | Kiểu dữ liệu                           | Mô tả                    | Ghi chú                |
+| ----------- | -------------- | -------------------------------------- | ------------------------ | ---------------------- |
+| enrollments | enrollment_id  | INT AUTO_INCREMENT                     | Mã đăng ký               | PK                     |
+|             | user_id        | INT                                    | Mã người học đăng ký     | FK → users.user_id     |
+|             | course_id      | INT                                    | Mã khóa học được đăng ký | FK → courses.course_id |
+|             | enrolled_at    | DATETIME                               | Thời điểm đăng ký        |                        |
+|             | payment_status | ENUM('unpaid','paid','refunded')       | Trạng thái thanh toán    |                        |
+|             | progress       | TINYINT                                | Tiến độ học (%) 0–100    |                        |
+|             | status         | ENUM('active','cancelled','completed') | Trạng thái tham gia khóa |                        |
+4. (Nếu muốn chi tiết hơn) Bảng payments (nếu có thanh toán khi đăng ký)
+| Tên bảng | Tên cột       | Kiểu dữ liệu                         | Mô tả                                 | Ghi chú                        |
+| -------- | ------------- | ------------------------------------ | ------------------------------------- | ------------------------------ |
+| payments | payment_id    | INT AUTO_INCREMENT                   | Mã giao dịch thanh toán               | PK                             |
+|          | enrollment_id | INT                                  | Mã đăng ký (liên kết đến enrollments) | FK → enrollments.enrollment_id |
+|          | amount        | DECIMAL(10,2)                        | Số tiền thanh toán                    |                                |
+|          | method        | ENUM('vnpay','momo','bank_transfer') | Phương thức thanh toán                |                                |
+|          | paid_at       | DATETIME                             | Thời gian thanh toán                  |                                |
+|          | status        | ENUM('success','failed','pending')   | Trạng thái giao dịch                  |                                |

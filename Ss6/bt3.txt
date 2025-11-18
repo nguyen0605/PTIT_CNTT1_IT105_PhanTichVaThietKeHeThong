@@ -1,0 +1,98 @@
+1. Danh sách Stakeholders
+| **Stakeholder**                                 | **Vai trò**                                                       | **Nguồn yêu cầu**                                                   |
+| ----------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
+| **Học viên (Student)**                          | Người mua khóa học, xem bài giảng, làm bài tập, đánh giá khóa học | Nhu cầu sử dụng hệ thống để học online, thanh toán, tra cứu tiến độ |
+| **Giảng viên (Instructor)**                     | Tạo khóa học, upload bài giảng, quản lý học viên                  | Yêu cầu quản lý nội dung và tương tác với học viên                  |
+| **Quản trị viên (Admin)**                       | Quản lý toàn bộ hệ thống, khóa học, người dùng, giao dịch         | Quy định vận hành, đảm bảo chất lượng hệ thống                      |
+| **Bộ phận kế toán**                             | Theo dõi doanh thu khóa học, xuất báo cáo thanh toán              | Yêu cầu theo dõi giao dịch và sổ sách                               |
+| **Bộ phận kỹ thuật (IT/DevOps)**                | Bảo trì server, sửa lỗi, đảm bảo hiệu năng                        | Yêu cầu vận hành, bảo trì, xử lý lỗi                                |
+| **Nhà cung cấp thanh toán (VNPay/MoMo/Stripe)** | Xử lý giao dịch thanh toán                                        | Yêu cầu tích hợp API và kiểm soát lỗi giao dịch                     |
+| **Cơ quan quản lý (thuế, pháp lý)**             | Giám sát tính hợp pháp của thanh toán và nội dung                 | Tuân thủ pháp luật, quy định thương mại điện tử                     |
+| **Nhà cung cấp nội dung thuê ngoài**            | Cung cấp thêm khóa học hoặc video                                 | Yêu cầu quản lý bản quyền và phân phối nội dung                     |
+2. Yêu cầu Chức năng (Functional Requirements)
+F1. Đăng ký & đăng nhập
+
+Hệ thống cho phép người dùng đăng ký tài khoản mới bằng email và mật khẩu.
+
+Hệ thống hỗ trợ đăng nhập bằng email + mật khẩu hoặc đăng nhập OAuth (Google/Facebook).
+
+F2. Quản lý khóa học
+
+Học viên có thể xem danh sách khóa học.
+
+Học viên được xem thông tin chi tiết khóa học (mô tả, nội dung, giá tiền, đánh giá).
+
+Giảng viên có thể tạo mới khóa học, chỉnh sửa nội dung, upload video.
+
+F3. Mua khóa học
+
+Học viên có thể thanh toán bằng ví điện tử (VNPay, MoMo…).
+
+Hệ thống ghi nhận giao dịch và kích hoạt khóa học sau khi thanh toán thành công.
+
+F4. Học tập & theo dõi tiến độ
+
+Học viên có thể xem video bài giảng, tải tài liệu.
+
+Hệ thống tự động lưu tiến độ học và hiển thị % hoàn thành.
+
+F5. Bài tập & đánh giá
+
+Giảng viên tạo quiz/bài tập.
+
+Học viên làm bài và xem kết quả sau khi nộp.
+
+F6. Quản lý người dùng & hệ thống (Admin)
+
+Admin có thể khóa tài khoản, xóa khóa học, cập nhật thông tin.
+
+Admin xem danh sách giao dịch, xuất báo cáo.
+
+F7. Đánh giá & bình luận
+
+Học viên đã mua khóa có thể đánh giá (rating) và bình luận nội dung.
+
+3. Yêu cầu Phi chức năng (Non-functional Requirements)
+NFR1. Hiệu năng (Performance)
+
+Thời gian tải trang chủ ≤ 2 giây.
+
+Hệ thống xử lý ≥ 1.000 user online cùng lúc.
+
+API phản hồi trung bình ≤ 500ms.
+
+NFR2. Bảo mật (Security)
+
+Mật khẩu phải được mã hóa bằng bcrypt hoặc tương đương.
+
+Mọi API quan trọng phải yêu cầu JWT token.
+
+Hệ thống khóa tài khoản sau 5 lần đăng nhập sai.
+
+Video bài giảng phải giới hạn quyền truy cập (chống tải trái phép).
+
+NFR3. Tính ổn định & độ tin cậy (Reliability)
+
+Uptime hệ thống ≥ 99%.
+
+Có cơ chế tự động sao lưu dữ liệu hàng ngày.
+
+Có quy trình khôi phục hệ thống (disaster recovery).
+
+NFR4. Khả năng mở rộng (Scalability)
+
+Hệ thống có thể mở rộng ngang bằng load balancing.
+
+Cơ sở dữ liệu hỗ trợ sharding khi số lượng khóa học > 50.000.
+
+NFR5. Tính khả dụng (Usability)
+
+Giao diện dễ thao tác, hỗ trợ mobile responsive.
+
+Người mới có thể sử dụng hệ thống trong vòng < 5 phút thao tác.
+
+NFR6. Tính tương thích (Compatibility)
+
+Hoạt động trên Chrome, Firefox, Safari, Edge.
+
+Hỗ trợ ứng dụng mobile (Android/iOS).
